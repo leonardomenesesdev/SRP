@@ -2,21 +2,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TurmaDao {
+    List<Aluno> listaDao = new ArrayList<Aluno>();
+
     public List<Aluno> load(){
-        List<Aluno> listaDao = new ArrayList<Aluno>();
-        listaDao.add(new Aluno("Leo", "2121"));
-        listaDao.add(new Aluno("Saulo", "1111"));
-        listaDao.add(new Aluno("Enzo", "314312"));
-        listaDao.add(new Aluno("Anderson", "312120"));
         return listaDao;
     }
-    public void save(){
-
+    public void save(Aluno a){
+        listaDao.add(a);
     }
-    public void update(){
-
+    // devo atualizar um aluno ou a lista inteira?
+    public void update(String matricula, Aluno alunoAtualizado){
+        for(int i = 0; i<listaDao.size(); i++){
+            Aluno aluno = listaDao.get(i);
+            if(aluno.getMatricula().equals(matricula)){
+                listaDao.set(i, alunoAtualizado);
+            }
+        }
     }
-    public void delete(){
-
+    // deleto um aluno ou a lista inteira?
+    public void delete(Aluno a){
+        listaDao.remove(a);
     }
 }
